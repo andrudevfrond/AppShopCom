@@ -48,7 +48,7 @@ public class ShopDbContext :DbContext
 }
 
 public record Category (int Id, string Name);
-public record Product(int Id, string Name, string Description, decimal Price, int CategoryId) { 
+public record Product(int Id, string Name, string Description, decimal Price, int CategoryId) {
     public Category Category { get; set; }
 };
 
