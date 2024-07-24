@@ -3,22 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.MainPage">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Label x:Name="Category" Grid.Row="0" Grid.Column="0"/>
-        <Label x:Name="Clients" Grid.Row="0" Grid.Column="1"/>
-        <Label x:Name="Products" Grid.Row="1" Grid.Column="0"/>
-        <Button HorizontalOptions="Center" Text="Guardar" Grid.Row="2" Grid.ColumnSpan="2"/>
+    <FlexLayout Direction="Column" JustifyContent="SpaceBetween" AlignContent="Center">
+        <Label Text="Nombre:" FlexLayout.Basis="10%"/>
+        <Label Text="Apellido:"/>
+        <Label Text="Productos:"/>
+        <Border FlexLayout.Grow="1" Stroke="Gray">
+            <CollectionView>
 
-    </Grid>
+            </CollectionView>
+        </Border>
+
+        <Button Text="Guardar"/>
+        <Button Text="Ver"/>
+
+    </FlexLayout>
+
+    <!--<Grid>
+    <Grid.ColumnDefinitions>
+    <ColumnDefinition Width="1*"/>
+    <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <Label x:Name="Category" Grid.Row="0" Grid.Column="0"/>
+    <Label x:Name="Clients" Grid.Row="0" Grid.Column="1"/>
+    <Label x:Name="Products" Grid.Row="1" Grid.Column="0"/>
+    <Button HorizontalOptions="Center" Text="Guardar" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+    </Grid>-->
 
     <!--<VerticalStackLayout>
     <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
