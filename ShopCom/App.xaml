@@ -4,15 +4,15 @@
              xmlns:local="clr-namespace:ShopCom"
              x:Class="ShopCom.App">
     <Application.Resources>
-        <Style x:Key="myGridVaxi" TargetType="Grid">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <SolidColorBrush Color="LightYellow"/>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Padding" Value="20"></Setter>
-        </Style>
         <ResourceDictionary>
+            <Style x:Key="myGridVaxi" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{AppThemeBinding Light='LightSteelBlue',Dark='DarkSlateBlue'}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Padding" Value="20"></Setter>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
