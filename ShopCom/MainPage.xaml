@@ -4,6 +4,9 @@
              x:Class="ShopCom.MainPage">
 
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Style="{StaticResource myGridVaxi}">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+        </Grid.GestureRecognizers>
         <Label FontSize="30" x:Name="category"/>
         <Label FontSize="30" x:Name="client" Grid.Column="1"/>
         <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1"/>
