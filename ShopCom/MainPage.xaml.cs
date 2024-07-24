@@ -1,4 +1,4 @@
-﻿using ShopCom.DataAccess;
+﻿using Microsoft.Maui.Controls.Shapes;
 
 namespace ShopCom
 {
@@ -7,15 +7,12 @@ namespace ShopCom
         public MainPage()
         {
             InitializeComponent();
-            var dbcontext = new ShopDbContext();
-            category.Text = $"{nameof(category)}: " + dbcontext.Categories.Count().ToString();
-            client.Text = $"{nameof(client)}: " + dbcontext.Clients.Count().ToString();
-            product.Text = $"{nameof(product)}: " + dbcontext.Products.Count().ToString();
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
         {
-            await DisplayAlert("Mensaje de Andru: Hola Andru", "Ok", "Cancelar");
+            (sender as Rectangle)?.ScaleTo(2);
+            (sender as Rectangle)?.TranslateTo(200, 200);
         }
     }
 

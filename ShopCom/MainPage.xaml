@@ -5,26 +5,16 @@
 
 
     <VerticalStackLayout>
-        <Label FontSize="30" x:Name="category"/>
-        <Label FontSize="30" x:Name="client" Grid.Column="1"/>
-        <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1"/>
-        <Button Text="Guardar"/>
-        <DatePicker/>
-        <Editor Placeholder="Este es un editor" HeightRequest="200"/>
-        <Entry Placeholder="Este es una caja de texto"/>
-        <Picker>
-            <Picker.Items>
-                <x:String>Naranjas</x:String>
-                <x:String>Melones</x:String>
-                <x:String>limones</x:String>
-                <x:String>Manzanas</x:String>
-                <x:String>Duraznos</x:String>
-            </Picker.Items>
-        </Picker>
-        <Stepper Minimum="0" Maximum="50" Increment="2"/>
-        <Switch IsToggled="True"/>
-        <Slider Minimum="0" Maximum="1"/>
-        <TimePicker/>
+        <Ellipse WidthRequest="200" HeightRequest="200">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="Orange"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Rectangle WidthRequest="100" HeightRequest="80" Fill="Blue">
+            <Rectangle.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Rectangle.GestureRecognizers>
+        </Rectangle>
     </VerticalStackLayout>
 
 
