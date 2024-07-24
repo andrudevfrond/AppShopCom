@@ -1,24 +1,16 @@
-﻿namespace ShopCom
+﻿using ShopCom.DataAccess;
+
+namespace ShopCom
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            var dbcontext = new ShopDbContext();
+            Category.Text= $"{nameof(Category)}: " + dbcontext.Categories.Count().ToString();
+            Clients.Text = $"{nameof(Clients)}: " + dbcontext.Clients.Count().ToString();
+            Products.Text = $"{nameof(Products)}: " + dbcontext.Products.Count().ToString();
         }
     }
 
