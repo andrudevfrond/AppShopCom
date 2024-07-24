@@ -3,20 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.MainPage">
 
-    <FlexLayout Direction="Column" JustifyContent="SpaceBetween" AlignContent="Center">
-        <Label Text="Nombre:" FlexLayout.Basis="10%"/>
-        <Label Text="Apellido:"/>
-        <Label Text="Productos:"/>
-        <Border FlexLayout.Grow="1" Stroke="Gray">
-            <CollectionView>
+    <AbsoluteLayout>
+        <Button Text="Vaxi"/>
+        <Button Text="Drez"/>
+        <Label Text="vaxdrez.com"/>
 
-            </CollectionView>
-        </Border>
+        <Rectangle Background="Black"/>
+        <Rectangle Background="Black"/>
+    </AbsoluteLayout>
 
-        <Button Text="Guardar"/>
-        <Button Text="Ver"/>
+    <!--<FlexLayout Direction="Column" JustifyContent="SpaceBetween" AlignContent="Center">
+    <Label Text="Nombre:" FlexLayout.Basis="10%"/>
+    <Label Text="Apellido:"/>
+    <Label Text="Productos:"/>
+    <Border FlexLayout.Grow="1" Stroke="Gray">
+    <CollectionView>
 
-    </FlexLayout>
+    </CollectionView>
+    </Border>
+
+    <Button Text="Guardar"/>
+    <Button Text="Ver"/>
+
+    </FlexLayout>-->
 
     <!--<Grid>
     <Grid.ColumnDefinitions>
