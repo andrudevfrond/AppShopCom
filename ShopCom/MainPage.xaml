@@ -3,14 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.MainPage">
 
-    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Style="{StaticResource myGridVaxi}">
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-        </Grid.GestureRecognizers>
+
+    <VerticalStackLayout>
         <Label FontSize="30" x:Name="category"/>
         <Label FontSize="30" x:Name="client" Grid.Column="1"/>
         <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1"/>
-    </Grid>
+        <Button Text="Guardar"/>
+        <DatePicker/>
+        <Editor Placeholder="Este es un editor" HeightRequest="200"/>
+        <Entry Placeholder="Este es una caja de texto"/>
+        <Picker>
+            <Picker.Items>
+                <x:String>Naranjas</x:String>
+                <x:String>Melones</x:String>
+                <x:String>limones</x:String>
+                <x:String>Manzanas</x:String>
+                <x:String>Duraznos</x:String>
+            </Picker.Items>
+        </Picker>
+        <Stepper Minimum="0" Maximum="50" Increment="2"/>
+        <Switch IsToggled="True"/>
+        <Slider Minimum="0" Maximum="1"/>
+        <TimePicker/>
+    </VerticalStackLayout>
+
+
+    <!--<Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Style="{StaticResource myGridVaxi}">
+    <Grid.GestureRecognizers>
+    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </Grid.GestureRecognizers>
+    <Label FontSize="30" x:Name="category"/>
+    <Label FontSize="30" x:Name="client" Grid.Column="1"/>
+    <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1"/>
+    </Grid>-->
 
     <!--<AbsoluteLayout>
     <Button Text="Vaxi" AbsoluteLayout.LayoutBounds="4,4, 100, 50"/>
