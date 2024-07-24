@@ -7,10 +7,10 @@ namespace ShopCom
         public MainPage()
         {
             InitializeComponent();
-            //var dbcontext = new ShopDbContext();
-            //Category.Text= $"{nameof(Category)}: " + dbcontext.Categories.Count().ToString();
-            //Clients.Text = $"{nameof(Clients)}: " + dbcontext.Clients.Count().ToString();
-            //Products.Text = $"{nameof(Products)}: " + dbcontext.Products.Count().ToString();
+            var dbcontext = new ShopDbContext();
+            category.Text = $"{nameof(category)}: " + dbcontext.Categories.Count().ToString();
+            client.Text = $"{nameof(client)}: " + dbcontext.Clients.Count().ToString();
+            product.Text = $"{nameof(product)}: " + dbcontext.Products.Count().ToString();
         }
     }
 

@@ -3,14 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.MainPage">
 
-    <AbsoluteLayout>
-        <Button Text="Vaxi"/>
-        <Button Text="Drez"/>
-        <Label Text="vaxdrez.com"/>
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Style="{StaticResource myGridVaxi}">
+        <Label FontSize="30" x:Name="category"/>
+        <Label FontSize="30" x:Name="client" Grid.Column="1"/>
+        <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1"/>
+    </Grid>
 
-        <Rectangle Background="Black"/>
-        <Rectangle Background="Black"/>
-    </AbsoluteLayout>
+    <!--<AbsoluteLayout>
+    <Button Text="Vaxi" AbsoluteLayout.LayoutBounds="4,4, 100, 50"/>
+    <Button Text="Drez" AbsoluteLayout.LayoutBounds="105,4,100, 50"/>
+    <Label Text="vaxdrez.com" AbsoluteLayout.LayoutBounds="4,60,100, 50"/>
+
+    <Rectangle Background="Black" AbsoluteLayout.LayoutBounds="40,125,5,100"/>
+    <Rectangle Background="Black" AbsoluteLayout.LayoutBounds="35,225,100,5"/>
+    </AbsoluteLayout>-->
 
     <!--<FlexLayout Direction="Column" JustifyContent="SpaceBetween" AlignContent="Center">
     <Label Text="Nombre:" FlexLayout.Basis="10%"/>
