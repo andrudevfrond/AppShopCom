@@ -11,7 +11,14 @@ public partial class ProductsPage : ContentPage
 		var dbContext = new ShopDbContext();
 
 		foreach (var item in dbContext.Products) {
-			container.Children.Add(new Label { Text = item.Name });
+			var button = new Button { Text = item.Name};
+			button.Clicked += async (s, e) =>
+			{
+				var uri = $"{nameof(ProductDetailPage)}?id={item.Id}";
+				await Shell.Current.GoToAsync(uri);
+			};
+
+			container.Children.Add(button);
 		}
 	}
 }

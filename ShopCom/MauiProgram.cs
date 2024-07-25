@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ShopCom.DataAccess;
+using ShopCom.Views;
 
 namespace ShopCom
 {
@@ -19,6 +20,9 @@ namespace ShopCom
             var dbContext = new ShopDbContext();
             dbContext.Database.EnsureCreated();
             dbContext.Dispose();
+
+            // registro de rutas
+            Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
