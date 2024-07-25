@@ -3,10 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.Views.CategoriesPage"
              Title="CategoriesPage">
-    <VerticalStackLayout>
-        <Label
-            Text="Categorias pagina principal"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <VerticalStackLayout x:Name="container"/>
 </ContentPage>
