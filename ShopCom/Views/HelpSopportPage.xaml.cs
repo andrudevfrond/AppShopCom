@@ -38,7 +38,7 @@ public class HelpSopportData: BindingUtilObject
 
     private int _visitsPenddings;
     public int VisitsPenddings {
-        get { return _visitsPenddings; }
+        get => _visitsPenddings;
         set {
             if (_visitsPenddings != value) { 
                 _visitsPenddings = value;
@@ -48,7 +48,7 @@ public class HelpSopportData: BindingUtilObject
     }
     private ObservableCollection<Client> _clients;
     public ObservableCollection<Client> Clients {
-        get { return _clients; }
+        get => _clients;
         set { 
             if (_clients != value){
                 _clients = value;
@@ -61,7 +61,7 @@ public class HelpSopportData: BindingUtilObject
 
     public Client SelectedClient
     {
-        get { return _selectedClient; }
+        get => _selectedClient;
         set
         {
             if (_selectedClient != value)
