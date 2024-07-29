@@ -5,21 +5,18 @@
              xmlns:views="clr-namespace:ShopCom.Views"
              Title="HelpSopportPage">
 
-    <ContentPage.Resources>
-        <views:HelpSopportData x:Key="data" VisitsPenddings="5"/>
-    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <views:HelpSopportData VisitsPenddings="5"/>
+    </ContentPage.BindingContext>
 
     <Grid RowDefinitions="auto, *">
         <Label
-            Text="{Binding
-            Source={StaticResource data},
-            Path=VisitsPenddings,
-            Mode=OneWay}"
+            Text="{Binding Clients.Count, Mode=OneWay}"
             FontSize="30"/>
 
         <CollectionView
             Grid.Row="1"
-            ItemsSource="{Binding Source={StaticResource data}, Path=Clients, Mode=OneWay}"/>
+            ItemsSource="{Binding Clients, Mode=OneWay}"/>
 
     </Grid>
 </ContentPage>
