@@ -61,6 +61,11 @@
 
     </FlyoutItem>
 
+    <ShellContent
+        Title="Help Sopport"
+        ContentTemplate="{DataTemplate views:HelpSopportPage}"
+        Route="HelpSopportPage"/>
+
     <MenuItem
         Text="Abrir Página"
         Clicked="MenuItem_Clicked"/>
