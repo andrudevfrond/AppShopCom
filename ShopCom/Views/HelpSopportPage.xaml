@@ -16,6 +16,8 @@
 
         <CollectionView
             Grid.Row="1"
+            SelectionMode="Single"
+            SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
             ItemsSource="{Binding Clients, Mode=OneWay}"/>
 
     </Grid>

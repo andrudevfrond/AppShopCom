@@ -23,7 +23,7 @@ namespace ShopCom
 
             // registro de rutas
             Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
-            Routing.RegisterRoute(nameof(HelpSopportPage), typeof(HelpSopportPage));
+            Routing.RegisterRoute(nameof(HelpSopportDetailPage), typeof(HelpSopportDetailPage));
             
 #if DEBUG
     		builder.Logging.AddDebug();
