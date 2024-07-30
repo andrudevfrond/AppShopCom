@@ -51,14 +51,38 @@ public class HelpSupportDetailData : BindingUtilObject
             if (_selectedProduct != value)
             {
                 _selectedProduct = value;
+                PriceSelected = value.Price;
+                Count = 1;
                 RaisePropertyChanged();
             }
         }
     }
 
-    private int _count;
+    private decimal _totalPrice;
 
-    public int Count
+    public decimal TotalPrice
+    {
+        get => _totalPrice;
+        set {
+            if (_totalPrice != value) 
+            {
+                _totalPrice = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
+    private decimal _priceSelected;
+
+    public decimal PriceSelected
+    {
+        get => _priceSelected;
+        set { _priceSelected = value; }
+    }
+
+    private decimal _count;
+
+    public decimal Count
     {
         get => _count;
         set
@@ -66,6 +90,7 @@ public class HelpSupportDetailData : BindingUtilObject
             if (value != _count)
             {
                 _count = value;
+                TotalPrice = PriceSelected * value;
                 RaisePropertyChanged();
 
             }

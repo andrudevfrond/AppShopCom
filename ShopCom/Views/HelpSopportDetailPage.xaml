@@ -8,53 +8,48 @@
         <views:HelpSupportDetailData/>
     </ContentPage.BindingContext>
 
-    <Grid
-        ColumnDefinitions="*"
-        RowDefinitions="*,*"
-        Padding="15">
-        <VerticalStackLayout>
-            <Label Text="Productos" FontAttributes="Bold" FontSize="20"/>
-            <CollectionView
-                ItemsSource="{Binding Products}"
-                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                ItemTemplate="{StaticResource ProductDataTemplate}"
-                HeightRequest="300"
-                SelectionMode="Single"/>
-            <HorizontalStackLayout VerticalOptions="Center">
-                <Stepper
-                    Minimum="1"
-                    Maximum="100"
-                    Increment="1"
-                    x:Name="count"
-                    Value="{Binding Count, Mode=TwoWay}"/>
-                <Label
-                    Text="{Binding Value, Source={x:Reference Name=count}}"
-                    VerticalOptions="Center"
-                    Margin="4"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+    <Grid RowDefinitions="*,Auto,*">
+        <Grid
+            ColumnDefinitions="*,*"
+            Padding="15">
+            <VerticalStackLayout>
+                <Label Text="Productos" FontAttributes="Bold" FontSize="20"/>
+                <CollectionView
+                    ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                    ItemTemplate="{StaticResource ProductDataTemplate}"
+                    HeightRequest="300"
+                    SelectionMode="Single"/>
+                <HorizontalStackLayout VerticalOptions="Center">
+                    <Stepper
+                        Minimum="1"
+                        Maximum="100"
+                        Increment="1"
+                        x:Name="count"
+                        Value="{Binding Count, Mode=TwoWay}"/>
+                    <Label
+                        Text="{Binding Value, Source={x:Reference Name=count}}"
+                        VerticalOptions="Center"
+                        Margin="4"/>
+                    <Label Text="Total: " VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Label
+                        Text="{Binding TotalPrice}"
+                        VerticalOptions="Center"
+                        Margin="4"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="1" Margin="20">
-            <Label Text="Name:"/>
-            <Label Text="{Binding SelectedProduct.Name}"/>
-            <Label Text="Description:"/>
-            <Label Text="{Binding SelectedProduct.Description}"/>
-            <Label Text="Price:"/>
-            <Label Text="{Binding SelectedProduct.Price, StringFormat='{0:C}'}"/>
-        </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="1" Margin="20">
+                <Label Text="Name:"/>
+                <Label Text="{Binding SelectedProduct.Name}"/>
+                <Label Text="Description:"/>
+                <Label Text="{Binding SelectedProduct.Description}"/>
+                <Label Text="Price:"/>
+                <Label Text="{Binding SelectedProduct.Price, StringFormat='{0:C}'}"/>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 
-    <!--<VerticalStackLayout VerticalOptions="Center">
 
-    <Stepper Minimum="1"
-    Maximum="10"
-    Increment="1"
-    x:Name="Count"/>
 
-    <Label
-    Text="{Binding Value, Source={x:Reference Name=Count}}"
-    VerticalOptions="Center"
-    Margin="4"
-    HorizontalOptions="Center" />
-    </VerticalStackLayout>-->
 </ContentPage>
