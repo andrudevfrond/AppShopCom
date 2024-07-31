@@ -1,19 +1,17 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
 using ShopCom.DataAccess;
 
-namespace ShopCom.Views
+namespace ShopCom.Views;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            var dbContext = new ShopDbContext();
-            category.Text = dbContext.Categories.Count().ToString();
-            product.Text = dbContext.Products.Count().ToString();
-            client.Text = dbContext.Clients.Count().ToString();
-        }
+        var dbContext = new ShopDbContext();
+        category.Text = dbContext.Categories.Count().ToString();
+        product.Text = dbContext.Products.Count().ToString();
+        client.Text = dbContext.Clients.Count().ToString();
     }
-
 }

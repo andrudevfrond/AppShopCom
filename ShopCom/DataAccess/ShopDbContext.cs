@@ -7,6 +7,7 @@ public class ShopDbContext :DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Client> Clients { get; set; }
+    // public DbSet<Purchase> Purchases { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -53,3 +54,5 @@ public record Product(int Id, string Name, string Description, decimal Price, in
 };
 
 public record Client (int Id, string Name, string Adress);
+
+public record Purchase(int ClientId, int ProductId, int Cantidad);
