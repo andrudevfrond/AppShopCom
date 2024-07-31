@@ -5,11 +5,13 @@ namespace ShopCom.ViewModels;
 
 public class HelpSopportViewModel : BindingUtilObject
 {
-    public HelpSopportViewModel()
+    private readonly INavigationService _navigationService;
+    public HelpSopportViewModel(INavigationService navigationService)
     {
         var db = new ShopDbContext();
         Clients = new ObservableCollection<Client>(db.Clients);
         PropertyChanged += HelpSopportData_PropertyChanged;
+        _navigationService = navigationService;
     }
 
     private async void HelpSopportData_PropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -17,7 +19,7 @@ public class HelpSopportViewModel : BindingUtilObject
         if (e.PropertyName == nameof(SelectedClient))
         {
             var uri = $"{nameof(HelpSopportDetailPage)}?id={SelectedClient.Id}";
-            await Shell.Current.GoToAsync(uri);
+            await _navigationService.GoToAsync(uri);
         }
     }
 

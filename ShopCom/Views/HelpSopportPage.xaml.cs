@@ -2,16 +2,11 @@ namespace ShopCom.Views;
 
 public partial class HelpSopportPage : ContentPage
 {
-	public HelpSopportPage()
+	public HelpSopportPage( HelpSopportViewModel viewModel)
 	{
 		InitializeComponent();
+		BindingContext = viewModel;
 	}
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-		var dataObject = Resources["data"] as HelpSopportViewModel;
-		dataObject.VisitsPenddings = 30;
-    }
 }
 
 

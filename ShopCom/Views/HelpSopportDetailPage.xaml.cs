@@ -1,6 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-
 namespace ShopCom.Views;
 
 public partial class HelpSopportDetailPage : ContentPage, IQueryAttributable

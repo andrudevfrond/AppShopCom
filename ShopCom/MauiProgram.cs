@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using ShopCom.DataAccess;
-using ShopCom.Views;
 
 namespace ShopCom;
 
@@ -16,6 +14,16 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+
+        // Services
+        builder.Services.AddSingleton<INavigationService, NavegationService>();
+
+        // ViewModels
+        builder.Services.AddTransient<HelpSopportViewModel>();
+
+        // Pages
+
+        builder.Services.AddTransient<HelpSopportPage>();
 
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
