@@ -3,9 +3,9 @@ using System.ComponentModel;
 
 namespace ShopCom.ViewModels;
 
-public class HelpSopportData : BindingUtilObject
+public class HelpSopportViewModel : BindingUtilObject
 {
-    public HelpSopportData()
+    public HelpSopportViewModel()
     {
         var db = new ShopDbContext();
         Clients = new ObservableCollection<Client>(db.Clients);

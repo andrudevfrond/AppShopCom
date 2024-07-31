@@ -1,6 +1,3 @@
-
-using ShopCom.DataAccess;
-
 namespace ShopCom.Views;
 
 public partial class ProductDetailPage : ContentPage, IQueryAttributable

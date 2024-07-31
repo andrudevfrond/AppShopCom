@@ -1,7 +1,4 @@
-﻿using Microsoft.Maui.Controls.Shapes;
-using ShopCom.DataAccess;
-
-namespace ShopCom.Views;
+﻿namespace ShopCom.Views;
 
 public partial class MainPage : ContentPage
 {

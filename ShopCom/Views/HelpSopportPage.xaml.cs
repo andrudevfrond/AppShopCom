@@ -9,7 +9,7 @@ public partial class HelpSopportPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-		var dataObject = Resources["data"] as HelpSopportData;
+		var dataObject = Resources["data"] as HelpSopportViewModel;
 		dataObject.VisitsPenddings = 30;
     }
 }

@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.Views.HelpSopportDetailPage"
-             xmlns:views="clr-namespace:ShopCom.Views"
+             xmlns:vm="clr-namespace:ShopCom.ViewModels"
              Title="HelpSopportDetailPage">
     <ContentPage.BindingContext>
-        <views:HelpSupportDetailData/>
+        <vm:HelpSupportDetailViewModel/>
     </ContentPage.BindingContext>
 
     <Grid RowDefinitions="*,Auto,*">
