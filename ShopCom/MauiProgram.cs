@@ -20,6 +20,7 @@ public static class MauiProgram
 
         // ViewModels
         builder.Services.AddTransient<HelpSopportViewModel>();
+        builder.Services.AddTransient<HelpSupportDetailViewModel>();
 
         // Pages
 

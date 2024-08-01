@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace ShopCom.ViewModels;
 
-public partial class HelpSupportDetailViewModel : ViewModelGlobal
+public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttributable
 {
     public ICommand AddCommand
     {
@@ -72,5 +72,9 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal
         );
     }
 
-    
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        var id = int.Parse(query["id"].ToString());
+        ClientId = id;
+    }
 }
