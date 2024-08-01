@@ -1,10 +1,20 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace ShopCom.ViewModels;
 
-public class HelpSopportViewModel : BindingUtilObject
+public partial class HelpSopportViewModel : ViewModelGlobal
 {
+    [ObservableProperty]
+    private int visitsPenddings;
+
+    [ObservableProperty]
+    private ObservableCollection<Client> clients;
+
+    [ObservableProperty]
+    private Client selectedClient;
+
     private readonly INavigationService _navigationService;
     public HelpSopportViewModel(INavigationService navigationService)
     {
@@ -20,48 +30,6 @@ public class HelpSopportViewModel : BindingUtilObject
         {
             var uri = $"{nameof(HelpSopportDetailPage)}?id={SelectedClient.Id}";
             await _navigationService.GoToAsync(uri);
-        }
-    }
-
-    private int _visitsPenddings;
-    public int VisitsPenddings
-    {
-        get => _visitsPenddings;
-        set
-        {
-            if (_visitsPenddings != value)
-            {
-                _visitsPenddings = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-    private ObservableCollection<Client> _clients;
-    public ObservableCollection<Client> Clients
-    {
-        get => _clients;
-        set
-        {
-            if (_clients != value)
-            {
-                _clients = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-
-    private Client _selectedClient;
-
-    public Client SelectedClient
-    {
-        get => _selectedClient;
-        set
-        {
-            if (_selectedClient != value)
-            {
-                _selectedClient = value;
-                RaisePropertyChanged();
-            }
         }
     }
 }

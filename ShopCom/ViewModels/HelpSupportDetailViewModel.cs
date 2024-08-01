@@ -1,67 +1,24 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace ShopCom.ViewModels;
 
-public class HelpSupportDetailViewModel : BindingUtilObject
+public partial class HelpSupportDetailViewModel : ViewModelGlobal
 {
-
-    public HelpSupportDetailViewModel()
-    {
-        var db = new ShopDbContext();
-        Products = new ObservableCollection<Product>(db.Products);
-        AddCommand = new Command(() =>
-        {
-            var purchase = new Purchase(ClientId, SelectedProduct.Id, Count);
-            Purchases.Add(purchase);
-        },
-        () => true
-        );
-    }
-
     public ICommand AddCommand
     {
         get; set;
     }
 
-    private ObservableCollection<Purchase> _purchases = new ObservableCollection<Purchase>();
+    [ObservableProperty]
+    private ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
 
-    public ObservableCollection<Purchase> Purchases
-    {
-        get { return _purchases; }
-        set
-        {
-            if (_purchases != value)
-            {
-                _purchases = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
+    [ObservableProperty]
+    private int clientId;
 
-
-    private int _clientId;
-
-    public int ClientId
-    {
-        get { return _clientId; }
-        set { _clientId = value; }
-    }
-
-    private ObservableCollection<Product> _products;
-
-    public ObservableCollection<Product> Products
-    {
-        get => _products;
-        set
-        {
-            if (_products != value)
-            {
-                _products = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
+    [ObservableProperty]
+    private ObservableCollection<Product> products;
 
     private Product _selectedProduct;
 
@@ -75,33 +32,16 @@ public class HelpSupportDetailViewModel : BindingUtilObject
                 _selectedProduct = value;
                 PriceSelected = value.Price;
                 Count = 1;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
     }
 
-    private decimal _totalPrice;
+    [ObservableProperty]
+    private decimal totalPrice;
 
-    public decimal TotalPrice
-    {
-        get => _totalPrice;
-        set
-        {
-            if (_totalPrice != value)
-            {
-                _totalPrice = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-
-    private decimal _priceSelected;
-
-    public decimal PriceSelected
-    {
-        get => _priceSelected;
-        set { _priceSelected = value; }
-    }
+    [ObservableProperty]
+    private decimal priceSelected;
 
     private int _count;
 
@@ -114,9 +54,23 @@ public class HelpSupportDetailViewModel : BindingUtilObject
             {
                 _count = value;
                 TotalPrice = PriceSelected * value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
 
             }
         }
     }
+    public HelpSupportDetailViewModel()
+    {
+        var db = new ShopDbContext();
+        Products = new ObservableCollection<Product>(db.Products);
+        AddCommand = new Command(() =>
+        {
+            var purchase = new Purchase(ClientId, SelectedProduct.Id, Count);
+            Purchases.Add(purchase);
+        },
+        () => true
+        );
+    }
+
+    
 }
