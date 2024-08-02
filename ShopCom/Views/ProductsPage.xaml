@@ -14,8 +14,9 @@
     </Shell.SearchHandler>
 
     <CollectionView
-        x:Name="products"
         SelectionMode="Single"
+        ItemsSource="{Binding Products}"
+        SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
         ItemTemplate="{StaticResource ProductDataTemplate}"></CollectionView>
 
 </ContentPage>
