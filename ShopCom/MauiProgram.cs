@@ -18,13 +18,16 @@ public static class MauiProgram
         // Services
         builder.Services.AddSingleton<INavigationService, NavegationService>();
 
+        // Pages
+
+        builder.Services.AddTransient<HelpSopportPage>();
+        builder.Services.AddTransient<HelpSopportDetailPage>();
+
         // ViewModels
         builder.Services.AddTransient<HelpSopportViewModel>();
         builder.Services.AddTransient<HelpSupportDetailViewModel>();
 
-        // Pages
-
-        builder.Services.AddTransient<HelpSopportPage>();
+        
 
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
