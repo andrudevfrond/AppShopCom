@@ -3,5 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopCom.Views.ClientsPage"
              Title="ClientsPage">
-    <VerticalStackLayout x:Name="container"/>
+
+    <CarouselView
+        ItemsSource="{Binding Clients}"
+        CurrentItem="{Binding SelectedClient, Mode=TwoWay}">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Image Source="dotnet_bot.svg" WidthRequest="200"/>
+                    <Label
+                        Text="{Binding Name}"
+                        HorizontalOptions="Center"
+                        FontSize="Subtitle"
+                        Margin="10"/>
+                    <Label
+                        Text="{Binding Address}"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+
 </ContentPage>

@@ -53,6 +53,6 @@ public record Product(int Id, string Name, string Description, decimal Price, in
     public Category Category { get; set; }
 };
 
-public record Client (int Id, string Name, string Adress);
+public record Client (int Id, string Name, string Address);
 
 public record Purchase(int ClientId, int ProductId, int Cantidad);

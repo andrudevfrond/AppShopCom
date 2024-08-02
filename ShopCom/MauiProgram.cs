@@ -22,12 +22,12 @@ public static class MauiProgram
 
         builder.Services.AddTransient<HelpSopportPage>();
         builder.Services.AddTransient<HelpSopportDetailPage>();
+        builder.Services.AddTransient<ClientsPage>();
 
         // ViewModels
         builder.Services.AddTransient<HelpSopportViewModel>();
         builder.Services.AddTransient<HelpSupportDetailViewModel>();
-
-        
+        builder.Services.AddTransient<ClientsViewModel>();
 
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
