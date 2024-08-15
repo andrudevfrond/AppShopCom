@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -10,9 +11,10 @@ public partial class ProductsViewModel: ViewModelGlobal
 
     [ObservableProperty]
     private ObservableCollection<Product> products;
-
     [ObservableProperty]
     private Product selectedProduct;
+    [ObservableProperty]
+    private bool isRefreshing;
 
     public ProductsViewModel(INavigationService navigationService)
     {
@@ -20,6 +22,13 @@ public partial class ProductsViewModel: ViewModelGlobal
         GetProducts();
         PropertyChanged += ProductsViewModel_PropertyChanged;
 
+    }
+
+    [RelayCommand]
+    private async Task Refresh() {
+        GetProducts();
+        await Task.Delay(3000);
+        IsRefreshing = false;
     }
 
     // este evento solo sucede con la propiedades que sean twoWay

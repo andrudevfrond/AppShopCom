@@ -53,7 +53,46 @@
 
         <CollectionView
             Grid.Row="2"
-            ItemsSource="{Binding Purchases}"/>
+            ItemsSource="{Binding Purchases}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    Text="Eliminar"
+                                    BackgroundColor="LightYellow"
+                                    Command="{Binding BindingContext.DeletePurchaseCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding}"
+                                    />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid
+                            ColumnDefinitions="*,3*,*,*"
+                            HeightRequest="60"
+                            Padding="4">
+                            <Label
+                                Text="{Binding Count}"
+                                VerticalTextAlignment="Center"/>
+                            <Label
+                                Text="{Binding ProductName}"
+                                VerticalTextAlignment="Center"
+                                Grid.Column="1"/>
+                            <Label
+                                Text="{Binding PriceProduct, StringFormat='{0:C}'}"
+                                VerticalTextAlignment="Center"
+                                Grid.Column="2"/>
+                            <Label
+                                Text="{Binding Total, StringFormat='{0:C}'}"
+                                VerticalTextAlignment="Center"
+                                Grid.Column="3"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
     </Grid>
 
 

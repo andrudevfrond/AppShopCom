@@ -13,10 +13,17 @@
             ItemTemplate="{StaticResource ProductDataTemplate}"/>
     </Shell.SearchHandler>
 
-    <CollectionView
-        SelectionMode="Single"
-        ItemsSource="{Binding Products}"
-        SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-        ItemTemplate="{StaticResource ProductDataTemplate}"></CollectionView>
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView
+            SelectionMode="Single"
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+            ItemTemplate="{StaticResource ProductDataTemplate}">
+
+        </CollectionView>
+    </RefreshView>
+
 
 </ContentPage>

@@ -55,4 +55,11 @@ public record Product(int Id, string Name, string Description, decimal Price, in
 
 public record Client (int Id, string Name, string Address);
 
-public record Purchase(int ClientId, int ProductId, int Cantidad);
+public record Purchase(
+    int ClientId, 
+    int ProductId, 
+    int CountProduct,
+    string ProductName,
+    decimal ProductPrice,
+    decimal Total
+    );
