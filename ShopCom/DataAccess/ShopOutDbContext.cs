@@ -20,7 +20,7 @@ public class ShopOutDbContext: DbContext
     }
 }
 
-public record PurchaseItem(int ClientId, int Cantidad, decimal Precio) 
+public record PurchaseItem(int ClientId, int ProductId, int Cantidad, decimal Precio) 
 {
     public int Id { get; set; }
 }

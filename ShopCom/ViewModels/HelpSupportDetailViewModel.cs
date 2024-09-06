@@ -62,8 +62,12 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         }
     }
     private readonly ServicePurchase _servicePurchase;
+    private readonly ShopOutDbContext _outDbContext;
 
-    public HelpSupportDetailViewModel(IConnectivity connectivity, ServicePurchase servicePurchase)
+    public HelpSupportDetailViewModel(
+        IConnectivity connectivity, 
+        ServicePurchase servicePurchase,
+        ShopOutDbContext outDbContext)
     {
         var db = new ShopDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -83,16 +87,36 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         _connectivity = connectivity;
         connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
         _servicePurchase = servicePurchase;
+        _outDbContext = outDbContext;
     }
     [RelayCommand(CanExecute = nameof(statusConnection))]
     private async Task SendPurchase()
     {
         // SendPurchaseCommand
-        var result = await _servicePurchase.SendData(purchases);
-        if (result)
-        {
-            await Shell.Current.DisplayAlert("Mensaje", "Se enviaron la compras al servidor backend", "Aceptar");
+        // enviar datos al servidor
+
+        //var result = await _servicePurchase.SendData(purchases);
+        //if (result)
+        //{
+        //    await Shell.Current.DisplayAlert("Mensaje", "Se enviaron la compras al servidor backend", "Aceptar");
+        //}
+
+        // guardar datos en la base de dato sqlite
+        _outDbContext.Database.EnsureCreated();
+
+        foreach (var item in purchases) {
+            _outDbContext.Purchases.Add(new PurchaseItem( 
+                item.ClientId,
+                item.ProductId,
+                item.Cantidad,
+                item.ProductoPrecio
+            ));
         }
+
+        await _outDbContext.SaveChangesAsync();
+
+        await Shell.Current.DisplayAlert("Mensaje", "Se registra en la base de datos sqlite", "Aceptar");
+
     }
 
     private void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
