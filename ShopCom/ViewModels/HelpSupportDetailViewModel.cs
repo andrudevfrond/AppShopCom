@@ -61,7 +61,9 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
             }
         }
     }
-    public HelpSupportDetailViewModel(IConnectivity connectivity)
+    private readonly ServicePurchase _servicePurchase;
+
+    public HelpSupportDetailViewModel(IConnectivity connectivity, ServicePurchase servicePurchase)
     {
         var db = new ShopDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -80,6 +82,17 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         );
         _connectivity = connectivity;
         connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+        _servicePurchase = servicePurchase;
+    }
+    [RelayCommand(CanExecute = nameof(statusConnection))]
+    private async Task SendPurchase()
+    {
+        // SendPurchaseCommand
+        var result = await _servicePurchase.SendData(purchases);
+        if (result)
+        {
+            await Shell.Current.DisplayAlert("Mensaje", "Se enviaron la compras al servidor backend", "Aceptar");
+        }
     }
 
     private void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
@@ -90,11 +103,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     private bool statusConnection() {
         return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
     }
-    [RelayCommand(CanExecute =nameof(statusConnection))]
-    private void SendPurchase() { 
-        // SendPurchaseCommand
-
-    }
+    
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {

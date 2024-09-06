@@ -36,6 +36,9 @@ public static class MauiProgram
         //conecction
         builder.Services.AddSingleton(Connectivity.Current);
 
+        builder.Services.AddSingleton<ServicePurchase>();
+        builder.Services.AddSingleton<HttpClient>();
+
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
         dbContext.Dispose();

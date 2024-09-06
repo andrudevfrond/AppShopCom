@@ -58,8 +58,8 @@ public record Client (int Id, string Name, string Address);
 public record Purchase(
     int ClientId, 
     int ProductId, 
-    int CountProduct,
+    int Cantidad,
     string ProductName,
-    decimal ProductPrice,
+    decimal ProductoPrecio,
     decimal Total
     );

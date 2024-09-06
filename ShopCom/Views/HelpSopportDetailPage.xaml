@@ -4,11 +4,8 @@
              x:Class="ShopCom.Views.HelpSopportDetailPage"
              xmlns:vm="clr-namespace:ShopCom.ViewModels"
              Title="HelpSopportDetailPage">
-    <ContentPage.BindingContext>
-        <vm:HelpSupportDetailViewModel/>
-    </ContentPage.BindingContext>
 
-    <Grid RowDefinitions="*,Auto,*">
+    <FlexLayout Direction="Column" JustifyContent="Center" AlignContent="Center">
         <Grid
             ColumnDefinitions="*,*"
             Padding="15">
@@ -53,7 +50,8 @@
 
         <CollectionView
             Grid.Row="2"
-            ItemsSource="{Binding Purchases}">
+            ItemsSource="{Binding Purchases}"
+            FlexLayout.Grow="1">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -93,8 +91,9 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-    </Grid>
 
-
-
+        <Button Grid.Row="3"
+                Text="Enviar al servidor"
+                Command="{Binding SendPurchaseCommand}"/>
+    </FlexLayout>
 </ContentPage>
