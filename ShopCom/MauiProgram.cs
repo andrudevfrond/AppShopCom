@@ -17,7 +17,7 @@ public static class MauiProgram
 
         // Services
         builder.Services.AddSingleton<INavigationService, NavegationService>();
-
+        builder.Services.AddSingleton<IDatabasePathService, DatabasePathService>();
         // Pages
 
         builder.Services.AddTransient<HelpSopportPage>();
@@ -38,6 +38,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<ServicePurchase>();
         builder.Services.AddSingleton<HttpClient>();
+
+        builder.Services.AddDbContext<ShopOutDbContext>();
 
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
