@@ -11,6 +11,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     {
         get; set;
     }
+    private readonly IConnectivity _connectivity;
 
     [ObservableProperty]
     private ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
@@ -60,7 +61,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
             }
         }
     }
-    public HelpSupportDetailViewModel()
+    public HelpSupportDetailViewModel(IConnectivity connectivity)
     {
         var db = new ShopDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -77,6 +78,22 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         },
         () => true
         );
+        _connectivity = connectivity;
+        connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+    }
+
+    private void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
+    {
+        SendPurchaseCommand.NotifyCanExecuteChanged();
+    }
+
+    private bool statusConnection() {
+        return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
+    }
+    [RelayCommand(CanExecute =nameof(statusConnection))]
+    private void SendPurchase() { 
+        // SendPurchaseCommand
+
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)

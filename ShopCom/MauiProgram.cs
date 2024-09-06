@@ -33,6 +33,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ProductsViewModel>();
         builder.Services.AddTransient<ProductDetailsViewModel>();
 
+        //conecction
+        builder.Services.AddSingleton(Connectivity.Current);
+
         var dbContext = new ShopDbContext();
         dbContext.Database.EnsureCreated();
         dbContext.Dispose();
