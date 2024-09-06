@@ -24,6 +24,10 @@
     </Shell.FlyoutFooter>
 
     <ShellContent
+        Title="Resumen de Ventas"
+        ContentTemplate="{DataTemplate views:SummaryPage}"
+        Route="SummaryPage" />
+    <ShellContent
         Title="Acerca de mi Tienda"
         ContentTemplate="{DataTemplate views:AboutPage}"
         Route="AboutPage" />

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
 
 namespace ShopCom;
 
@@ -18,13 +19,14 @@ public static class MauiProgram
         // Services
         builder.Services.AddSingleton<INavigationService, NavegationService>();
         builder.Services.AddSingleton<IDatabasePathService, DatabasePathService>();
-        // Pages
 
+        // Pages
         builder.Services.AddTransient<HelpSopportPage>();
         builder.Services.AddTransient<HelpSopportDetailPage>();
         builder.Services.AddTransient<ClientsPage>();
         builder.Services.AddTransient<ProductsPage>();
         builder.Services.AddTransient<ProductDetailPage>();
+        builder.Services.TryAddTransient<SummaryPage>();
 
         // ViewModels
         builder.Services.AddTransient<HelpSopportViewModel>();
@@ -32,6 +34,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ClientsViewModel>();
         builder.Services.AddTransient<ProductsViewModel>();
         builder.Services.AddTransient<ProductDetailsViewModel>();
+        builder.Services.AddTransient<SummaryViewModel>();
 
         //conecction
         builder.Services.AddSingleton(Connectivity.Current);
