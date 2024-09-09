@@ -89,7 +89,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         _servicePurchase = servicePurchase;
         _outDbContext = outDbContext;
     }
-    [RelayCommand(CanExecute = nameof(statusConnection))]
+    [RelayCommand(CanExecute = nameof(StatusConnection))]
     private async Task SendPurchase()
     {
         // SendPurchaseCommand
@@ -124,7 +124,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         SendPurchaseCommand.NotifyCanExecuteChanged();
     }
 
-    private bool statusConnection() {
+    private bool StatusConnection() {
         return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
     }
     

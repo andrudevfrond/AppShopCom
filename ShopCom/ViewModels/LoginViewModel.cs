@@ -30,7 +30,7 @@ public partial class LoginViewModel: ViewModelGlobal
             Application.Current!.MainPage = new AppShell();
         }
         else {
-            Shell.Current?.DisplayAlert("Mensaje", "Ingreso credenciales erroneas", "Aceptar");
+            await  Shell.Current.DisplayAlert("Mensaje", "Ingreso credenciales erroneas", "Aceptar");
         }
     }
     private void _connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
@@ -39,7 +39,7 @@ public partial class LoginViewModel: ViewModelGlobal
     }
     private bool StatusConnection()
     {
-        return _connectivity.NetworkAccess == NetworkAccess.Local ? true : false;
+        return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
     }
 
     

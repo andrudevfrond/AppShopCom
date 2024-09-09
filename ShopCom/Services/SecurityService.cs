@@ -13,7 +13,7 @@ public class SecurityService
         _client = client;
     }
 
-    public async Task<bool> Login(string email,string password) {
+    public async Task<bool> Login(string? email,string? password) {
         var uri = "http://172.27.192.1:81/api/usuario/login";
 
         var loginRequest = new LoginRequest { 
@@ -29,9 +29,11 @@ public class SecurityService
         var jsonresult = await response.Content.ReadAsStringAsync();
 
         var result = JsonConvert.DeserializeObject<UsuarioResponse>(jsonresult);
+        
+        if (result == null) return false;
 
         // Almacenar los datos en el mobil
-        Preferences.Set("accesstoken", result!.Token);
+        Preferences.Set("accesstoken", result.Token);
         Preferences.Set("userId", result.Id);
         Preferences.Set("email", result.Email);
         Preferences.Set("nombre", $"{result.Nombre} {result.Apellido}");
