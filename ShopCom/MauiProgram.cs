@@ -16,7 +16,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // Services
+        // Interfaces
         builder.Services.AddSingleton<INavigationService, NavegationService>();
         builder.Services.AddSingleton<IDatabasePathService, DatabasePathService>();
 
@@ -27,6 +27,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ProductsPage>();
         builder.Services.AddTransient<ProductDetailPage>();
         builder.Services.TryAddTransient<SummaryPage>();
+        builder.Services.TryAddTransient<LoginPage>();
 
         // ViewModels
         builder.Services.AddTransient<HelpSopportViewModel>();
@@ -35,12 +36,15 @@ public static class MauiProgram
         builder.Services.AddTransient<ProductsViewModel>();
         builder.Services.AddTransient<ProductDetailsViewModel>();
         builder.Services.AddTransient<SummaryViewModel>();
+        builder.Services.AddTransient<LoginViewModel>();
 
         //conecction
         builder.Services.AddSingleton(Connectivity.Current);
 
-        builder.Services.AddSingleton<ServicePurchase>();
+        // services
         builder.Services.AddSingleton<HttpClient>();
+        builder.Services.AddSingleton<ServicePurchase>();
+        builder.Services.AddSingleton<SecurityService>();
 
         builder.Services.AddDbContext<ShopOutDbContext>();
 

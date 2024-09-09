@@ -2,10 +2,18 @@
 
 public partial class App : Application
 {
-    public App()
+    public App( LoginPage loginPage, ShopOutDbContext outDbContext)
     {
         InitializeComponent();
+        outDbContext.Database.EnsureCreated();
+        var accesssToken = Preferences.Get("accesstoken", string.Empty);
 
-        MainPage = new AppShell();
+        if (string.IsNullOrEmpty(accesssToken))
+        {
+            MainPage = loginPage;
+        }
+        else { 
+            MainPage = new AppShell();
+        }
     }
 }
